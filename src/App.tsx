@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Route, Server, Users, ShieldCheck, Settings,
-  Menu, Zap, Bell, ChevronDown
+  Menu, Zap, Bell, ChevronDown, BarChart3, Terminal, Search
 } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import Routing from './components/Routing';
@@ -10,6 +10,9 @@ import Providers from './components/Providers';
 import Teams from './components/Teams';
 import Validation from './components/Validation';
 import SettingsPage from './components/Settings';
+import Playground from './components/Playground';
+import CostAnalysis from './components/CostAnalysis';
+import CommandPalette from './components/CommandPalette';
 import { recentAlerts } from './data/mockData';
 
 const navItems = [
@@ -18,6 +21,8 @@ const navItems = [
   { id: 'providers', label: 'Providers', icon: Server },
   { id: 'teams', label: 'Teams & Budgets', icon: Users },
   { id: 'validation', label: 'Validation', icon: ShieldCheck },
+  { id: 'cost-analysis', label: 'Cost Analysis', icon: BarChart3 },
+  { id: 'playground', label: 'API Playground', icon: Terminal },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
@@ -25,6 +30,19 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [alertsOpen, setAlertsOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+
+  // Cmd+K / Ctrl+K shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -33,6 +51,8 @@ export default function App() {
       case 'providers': return <Providers />;
       case 'teams': return <Teams />;
       case 'validation': return <Validation />;
+      case 'cost-analysis': return <CostAnalysis />;
+      case 'playground': return <Playground />;
       case 'settings': return <SettingsPage />;
       default: return <Dashboard />;
     }
@@ -132,12 +152,24 @@ export default function App() {
                   {activeTab === 'providers' && 'Provider health, pricing, and model management'}
                   {activeTab === 'teams' && 'Budget tracking and spend attribution by team'}
                   {activeTab === 'validation' && 'Quality validation and routing accuracy monitoring'}
+                  {activeTab === 'cost-analysis' && 'Detailed cost breakdowns, forecasting, and optimization metrics'}
+                  {activeTab === 'playground' && 'Test routing decisions interactively with live pipeline visualization'}
                   {activeTab === 'settings' && 'Configure routing policies, budgets, and system settings'}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
+              {/* Command Palette Trigger */}
+              <button
+                onClick={() => setCommandPaletteOpen(true)}
+                className="hidden md:flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-gray-400 hover:text-white hover:border-white/20 transition-all"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span>Search...</span>
+                <kbd className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded text-[10px] text-gray-500">⌘K</kbd>
+              </button>
+
               {/* Alerts */}
               <div className="relative">
                 <motion.button
@@ -213,6 +245,13 @@ export default function App() {
           </AnimatePresence>
         </div>
       </main>
+
+      {/* Command Palette */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+        onNavigate={(tab) => setActiveTab(tab)}
+      />
     </div>
   );
 }
