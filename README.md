@@ -216,12 +216,70 @@ A full-viewport `<canvas>` overlay emitting physics-driven particles on mouse mo
 
 ### 4. Micro-interaction Effects (`Effects.tsx`)
 
-| Effect | Description |
+#### TiltCard — 3D Perspective Hover
+
+```typescript
+// Source: src/components/ui/Effects.tsx
+export function TiltCard({ children, className, intensity = 15 }) {
+  // onMouseMove → calculate rotation from cursor position relative to card center
+  // rotateX = (y - centerY) / centerY * -intensity  (±15° default)
+  // rotateY = (x - centerX) / centerX * +intensity
+  // scale3d(1.02) on hover for subtle pop
+}
+```
+
+| Sub-effect | Details |
 |---|---|
-| **TiltCard** | Perspective-aware card; cursor maps to `rotateX`/`rotateY` (±15°) with `scale3d(1.02)` and radial-gradient glare at 15% opacity, 0.2s fade. |
-| **HoloCard** | Animated gradient border (`violet-500 → cyan-400 → emerald-400`) fades in on hover with `blur-sm` for hologram scan-line. |
-| **AnimatedNumber** | `requestAnimationFrame` tween with cubic ease-out (`1-(1-progress)³`); comma-formatted for ≥100. |
-| **KeyboardShortcutsOverlay** | Framer Motion modal with scale/opacity animation; `<kbd>` cheat-sheet on dark backdrop. |
+| **3D Transform** | `perspective(1000px)` + `rotateX`/`rotateY` computed from mouse position relative to card bounds |
+| **Glare Overlay** | `radial-gradient(circle at X%, Y%, rgba(255,255,255,0.15), transparent 50%)` follows cursor with 0.2s opacity transition |
+| **Scale** | `scale3d(1.02, 1.02, 1.02)` applied on hover for tactile depth |
+| **Reset** | `transformStyle: preserve-3d` restored to neutral on mouse-leave over 0.1s |
+
+#### HoloCard — Holographic Border
+
+```typescript
+// Source: src/components/ui/Effects.tsx
+export function HoloCard({ children, className }) {
+  // Dual-layer gradient border that fades in on group-hover
+}
+```
+
+| Effect | Details |
+|---|---|
+| **Border Layer 1** | `absolute -inset-[1px]`, `bg-gradient-to-r from-violet-500 via-cyan-400 to-emerald-400`, `opacity-0 → opacity-100` on hover, `blur-sm` for scan-line glow |
+| **Border Layer 2** | Same gradient at `opacity-0 → opacity-70` for solid outline |
+| **Background** | `#12141c` rounded-2xl container for contrast |
+| **Duration** | 500ms transition on hover |
+
+#### AnimatedNumber — Smooth Counter Tween
+
+```typescript
+// Source: src/components/ui/Effects.tsx
+export function AnimatedNumber({ value, prefix, suffix }) {
+  // requestAnimationFrame loop with cubic ease-out (1 - (1 - p)³)
+  // Duration: 1500ms
+}
+```
+
+| Property | Value |
+|---|---|
+| **Animation** | `requestAnimationFrame` with cubic ease-out (`1 - Math.pow(1 - progress, 3)`) |
+| **Duration** | 1500ms |
+| **Formatting** | `toLocaleString()` for ≥100; `toFixed(1)` for <100 |
+| **Prefix/Suffix** | Configurable (e.g., `$`, `%`, `K`) |
+
+#### Cursor Particle System Recap
+
+Rendered globally via `<CursorParticles />` in `App.tsx`:
+
+| Parameter | Value | Implementation |
+|---|---|---|
+| Emit rate | 2 per `mousemove` | `addEventListener('mousemove', …)` |
+| Max count | 100 | FIFO splice when exceeded |
+| Physics | Gravity `vy += 0.05`/frame | Per-frame `requestAnimationFrame` loop |
+| Canvas | Full viewport, `z-50`, `pointer-events-none` | `mix-blend-mode: screen` |
+| Colors | `#8b5cf6`, `#06b6d4`, `#10b981`, `#f59e0b` | Random selection per particle |
+| Alpha | `1 - life/maxLife` | Per-frame fade-out |
 
 ### 5. Page Transitions
 
@@ -239,7 +297,7 @@ A full-viewport `<canvas>` overlay emitting physics-driven particles on mouse mo
 | Orbiting torus rings | Three.js torus geometry | `HeroScene3D.tsx` |
 | Spherical particle cloud | Three.js Points + BufferGeometry | `HeroScene3D.tsx` |
 | Provider network topology | Three.js + Drei (Sphere, Text, Line) | `ProviderNetwork3D.tsx` |
-| Bezier connection arcs | QuadraticBezierCurve3 | `ProviderNetwork3D.tsx` |
+| Bezier connection arcs | Three.js QuadraticBezierCurve3 | `ProviderNetwork3D.tsx` |
 | Cursor particle trail | Canvas 2D API | `CursorParticles.tsx` |
 | Tilt + glare effect | CSS transforms + radial-gradient | `Effects.tsx` → `TiltCard` |
 | Holographic border | Tailwind animated gradient | `Effects.tsx` → `HoloCard` |
@@ -254,11 +312,11 @@ Browser Window
 ├── <App />
 │   ├── <Suspense>          ← lazy route chunks
 │   │   ├── <Dashboard>
-│   │   │   ├── <HeroScene3D>     ← <Canvas> with R3F
-│   │   │   ├── <TiltCard>        ← CSS 3D transform + glare
-│   │   │   ├── <HoloCard>        ← gradient border on hover
-│   │   │   ├── <ProviderNetwork3D> ← <Canvas> with R3F
-│   │   │   ├── <AnimatedNumber>  ← rAF tween
+│   │   │   ├── <HeroScene3D>      ← <Canvas> with R3F
+│   │   │   ├── <TiltCard>         ← CSS 3D transform + glare
+│   │   │   ├── <HoloCard>         ← gradient border on hover
+│   │   │   ├── <ProviderNetwork3D>← <Canvas> with R3F
+│   │   │   ├── <AnimatedNumber>   ← rAF tween
 │   │   │   └── ...
 │   │   └── ...
 │   ├── <CommandPalette>
