@@ -16,7 +16,8 @@ import CommandPalette from './components/CommandPalette';
 import { ToastProvider, useToast } from './components/ui/Toast';
 import CursorParticles from './components/ui/CursorParticles';
 import { KeyboardShortcutsOverlay } from './components/ui/Effects';
-import { recentAlerts } from './data/mockData';
+import { alerts as recentAlerts } from './data/productionData';
+import type { Alert } from './types';
 
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, shortcut: 'D' },
@@ -301,7 +302,7 @@ function AppContent() {
                                 }`} />
                                 <div>
                                   <p className="text-xs text-gray-300">{alert.message}</p>
-                                  <p className="text-[10px] text-gray-500 mt-1">{alert.time}</p>
+                                  <p className="text-[10px] text-gray-500 mt-1">{new Date(alert.timestamp).toLocaleTimeString()}</p>
                                 </div>
                               </div>
                             </div>
