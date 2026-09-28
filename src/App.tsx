@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  LayoutDashboard, Route, Server, Users, ShieldCheck, 
-  Menu, X, Zap, Bell, ChevronDown
+  LayoutDashboard, Route, Server, Users, ShieldCheck, Settings,
+  Menu, Zap, Bell, ChevronDown
 } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import Routing from './components/Routing';
 import Providers from './components/Providers';
 import Teams from './components/Teams';
 import Validation from './components/Validation';
+import SettingsPage from './components/Settings';
 import { recentAlerts } from './data/mockData';
 
 const navItems = [
@@ -17,6 +18,7 @@ const navItems = [
   { id: 'providers', label: 'Providers', icon: Server },
   { id: 'teams', label: 'Teams & Budgets', icon: Users },
   { id: 'validation', label: 'Validation', icon: ShieldCheck },
+  { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
 export default function App() {
@@ -31,6 +33,7 @@ export default function App() {
       case 'providers': return <Providers />;
       case 'teams': return <Teams />;
       case 'validation': return <Validation />;
+      case 'settings': return <SettingsPage />;
       default: return <Dashboard />;
     }
   };
@@ -124,11 +127,12 @@ export default function App() {
                   {navItems.find(n => n.id === activeTab)?.label}
                 </h2>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  {activeTab === 'dashboard' && 'Overview of cost savings and routing performance'}
+                  {activeTab === 'dashboard' && 'Overview of cost savings, architecture, and routing performance'}
                   {activeTab === 'routing' && 'Real-time routing decisions and complexity analysis'}
                   {activeTab === 'providers' && 'Provider health, pricing, and model management'}
                   {activeTab === 'teams' && 'Budget tracking and spend attribution by team'}
                   {activeTab === 'validation' && 'Quality validation and routing accuracy monitoring'}
+                  {activeTab === 'settings' && 'Configure routing policies, budgets, and system settings'}
                 </p>
               </div>
             </div>
