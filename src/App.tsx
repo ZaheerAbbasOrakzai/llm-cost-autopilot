@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  LayoutDashboard, Route, Server, Users, ShieldCheck, Settings,
+  LayoutDashboard, Route, Server, Users, ShieldCheck, Settings, Layers,
   Menu, Zap, Bell, ChevronDown, BarChart3, Terminal, Search, Keyboard
 } from 'lucide-react';
 import Dashboard from './components/Dashboard';
@@ -12,6 +12,7 @@ import Validation from './components/Validation';
 import SettingsPage from './components/Settings';
 import Playground from './components/Playground';
 import CostAnalysis from './components/CostAnalysis';
+import Architecture from './components/Architecture';
 import CommandPalette from './components/CommandPalette';
 import { ToastProvider, useToast } from './components/ui/Toast';
 import CursorParticles from './components/ui/CursorParticles';
@@ -25,6 +26,7 @@ const navItems = [
   { id: 'providers', label: 'Providers', icon: Server, shortcut: 'P' },
   { id: 'teams', label: 'Teams & Budgets', icon: Users, shortcut: 'T' },
   { id: 'validation', label: 'Validation', icon: ShieldCheck, shortcut: 'V' },
+  { id: 'architecture', label: 'Architecture', icon: Layers, shortcut: 'H' },
   { id: 'cost-analysis', label: 'Cost Analysis', icon: BarChart3, shortcut: 'C' },
   { id: 'playground', label: 'API Playground', icon: Terminal, shortcut: 'A' },
   { id: 'settings', label: 'Settings', icon: Settings, shortcut: 'S' },
@@ -122,6 +124,7 @@ function AppContent() {
       case 'providers': return <Providers />;
       case 'teams': return <Teams />;
       case 'validation': return <Validation />;
+      case 'architecture': return <Architecture />;
       case 'cost-analysis': return <CostAnalysis />;
       case 'playground': return <Playground />;
       case 'settings': return <SettingsPage />;
@@ -236,15 +239,15 @@ function AppContent() {
                     {navItems.find(n => n.id === activeTab)?.label}
                   </h2>
                   <p className="text-xs text-gray-500 mt-0.5">
-                    {activeTab === 'dashboard' && 'Overview of cost savings, architecture, and routing performance'}
-                    {activeTab === 'routing' && 'Real-time routing decisions and complexity analysis'}
-                    {activeTab === 'providers' && 'Provider health, pricing, and model management'}
-                    {activeTab === 'teams' && 'Budget tracking and spend attribution by team'}
-                    {activeTab === 'validation' && 'Quality validation and routing accuracy monitoring'}
-                    {activeTab === 'cost-analysis' && 'Detailed cost breakdowns, forecasting, and optimization metrics'}
-                    {activeTab === 'playground' && 'Test routing decisions interactively with live pipeline visualization'}
-                    {activeTab === 'settings' && 'Configure routing policies, budgets, and system settings'}
-                  </p>
+                  {activeTab === 'dashboard' && 'Overview of cost savings, architecture, and routing performance'}
+                  {activeTab === 'routing' && 'Real-time routing decisions and complexity analysis'}
+                  {activeTab === 'providers' && 'Provider health, pricing, and model management'}
+                  {activeTab === 'teams' && 'Budget tracking and spend attribution by team'}
+                  {activeTab === 'validation' && 'Quality validation and routing accuracy monitoring'}
+                  {activeTab === 'architecture' && 'System architecture, tech stack, and core components'}
+                  {activeTab === 'cost-analysis' && 'Detailed cost breakdowns, forecasting, and optimization metrics'}
+                  {activeTab === 'playground' && 'Test routing decisions interactively with live pipeline visualization'}
+                  {activeTab === 'settings' && 'Configure routing policies, budgets, and system settings'}                  </p>
                 </div>
               </div>
 

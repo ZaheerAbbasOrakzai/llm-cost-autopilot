@@ -14,6 +14,7 @@ const commands = [
   { id: 'providers', label: 'Go to Providers', description: 'Manage LLM providers and models', icon: Server, tab: 'providers' },
   { id: 'teams', label: 'Go to Teams', description: 'View team budgets and spending', icon: Users, tab: 'teams' },
   { id: 'validation', label: 'Go to Validation', description: 'Monitor quality validation', icon: ShieldCheck, tab: 'validation' },
+  { id: 'architecture', label: 'Go to Architecture', description: 'System architecture and tech stack', icon: Sparkles, tab: 'architecture' },
   { id: 'cost-analysis', label: 'Go to Cost Analysis', description: 'Detailed cost breakdowns and forecasting', icon: Sparkles, tab: 'cost-analysis' },
   { id: 'playground', label: 'Go to API Playground', description: 'Test routing decisions interactively', icon: Sparkles, tab: 'playground' },
   { id: 'settings', label: 'Go to Settings', description: 'Configure routing policies', icon: Settings, tab: 'settings' },
