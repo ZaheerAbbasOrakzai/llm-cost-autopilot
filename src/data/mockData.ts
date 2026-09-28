@@ -1,5 +1,4 @@
-// Production-grade data with REAL LLM pricing and realistic patterns
-// This represents actual production data from a real LLM routing system
+// Illustrative sample data for the dashboard demo; this is not production telemetry.
 
 export interface Provider {
   id: string;
@@ -67,7 +66,7 @@ export interface CostDataPoint {
   savings: number;
 }
 
-// REAL provider data with actual pricing (as of 2024)
+// Example provider catalog and approximate historical pricing; verify rates before use.
 export const providers: Provider[] = [
   {
     id: 'openai',
@@ -127,7 +126,7 @@ export const providers: Provider[] = [
   }
 ];
 
-// REAL routing decisions from production traffic
+// Synthetic routing decisions for display only.
 export const routingDecisions: RoutingDecision[] = [
   { id: '1', timestamp: new Date('2024-01-15T10:23:45'), requestPreview: 'Translate this paragraph to Spanish...', complexity: 'simple', routedTo: 'GPT-4o Mini', alternativeModels: ['Phi-3 Mini', 'Claude 3 Haiku'], tokens: 450, cost: 0.00027, latency: 124, qualityScore: 0.89, saved: 0.00645 },
   { id: '2', timestamp: new Date('2024-01-15T10:24:12'), requestPreview: 'Analyze this code for security vulnerabilities...', complexity: 'hard', routedTo: 'GPT-4o', alternativeModels: ['Claude 3.5 Sonnet'], tokens: 2800, cost: 0.056, latency: 890, qualityScore: 0.96, saved: 0 },
@@ -139,7 +138,7 @@ export const routingDecisions: RoutingDecision[] = [
   { id: '8', timestamp: new Date('2024-01-15T10:26:30'), requestPreview: 'Create a SQL query to join these tables...', complexity: 'medium', routedTo: 'Qwen 2 72B', alternativeModels: ['Llama 3.1 70B', 'GPT-4o Mini'], tokens: 950, cost: 0.00086, latency: 320, qualityScore: 0.88, saved: 0.01344 },
 ];
 
-// REAL team budgets from production
+// Synthetic team budgets for display only.
 export const teamBudgets: TeamBudget[] = [
   { id: '1', name: 'Engineering', monthlyBudget: 5000, spent: 3240, requests: 45200, avgCostPerRequest: 0.072, savings: 1890, trend: [2100, 2400, 2800, 3100, 3240] },
   { id: '2', name: 'Product', monthlyBudget: 2000, spent: 1450, requests: 18900, avgCostPerRequest: 0.077, savings: 890, trend: [900, 1100, 1200, 1350, 1450] },
@@ -148,7 +147,7 @@ export const teamBudgets: TeamBudget[] = [
   { id: '5', name: 'Marketing', monthlyBudget: 1000, spent: 620, requests: 8400, avgCostPerRequest: 0.074, savings: 380, trend: [350, 420, 510, 580, 620] },
 ];
 
-// REAL validation results
+// Synthetic validation results for display only.
 export const validationResults: ValidationResult[] = [
   { id: '1', timestamp: new Date('2024-01-15T10:30:00'), requestPreview: 'Translate paragraph to Spanish...', originalModel: 'GPT-4o Mini', validationModel: 'GPT-4o', originalScore: 0.89, validationScore: 0.92, delta: 0.03, passed: true, costDelta: -0.00618 },
   { id: '2', timestamp: new Date('2024-01-15T10:30:15'), requestPreview: 'Summarize meeting transcript...', originalModel: 'Llama 3.1 70B', validationModel: 'Claude 3.5 Sonnet', originalScore: 0.87, validationScore: 0.91, delta: 0.04, passed: true, costDelta: -0.06978 },

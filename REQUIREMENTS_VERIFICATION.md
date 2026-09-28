@@ -1,14 +1,15 @@
-# ✅ Requirements Verification Report
+# Requirements Checklist (Demo UI)
+
+> This checklist describes visible mock screens, not verified production capabilities. Provider integrations, live telemetry, persistence, and enforcement are not present. Treat backend-dependent items as unimplemented; see [README.md](./README.md).
 
 ## Original Requirements Checklist
 
-### ✅ Key Features (All Implemented)
+### UI placeholders (not live integrations)
 
 1. **Multi-provider support** (OpenAI, Anthropic, Groq, Together, local models)
-   - ✅ Implemented in **Providers** page
-   - ✅ Shows 5 providers with real pricing
-   - ✅ Health status monitoring
-   - ✅ Model comparison tables
+   - Sample catalog shown in **Providers** page
+   - Shows 5 provider examples with illustrative pricing
+   - Static health-status examples and model comparison tables
 
 2. **Request complexity classifier** (simple / medium / hard)
    - ✅ Implemented in **Routing** page
@@ -48,45 +49,38 @@
 
 ---
 
-### ✅ High-Level Architecture (All Visualized)
+### Target architecture placeholders (not deployed)
 
 All components from the architecture are now shown in the **Architecture** page:
 
-- ✅ **API Gateway** (FastAPI) - Receives all LLM requests
-- ✅ **Classifier Service** (MiniLM + Rules) - Estimates complexity
-- ✅ **Router** - Decides model based on complexity + pricing + latency + health
-- ✅ **Proxy Layer** (LiteLLM) - Executes calls, records tokens + cost + latency
-- ✅ **Background Validator** - Samples traffic and compares against stronger models
-- ✅ **PostgreSQL** - Historical usage and cost attribution
-- ✅ **Redis** - Rate limits, caching, real-time counters
+- Proposed API gateway, classifier, router, proxy, and validator; none are deployed
+- Proposed PostgreSQL and Redis services; neither is connected
 
 ---
 
-### ✅ Technology Stack (All Documented)
+### Proposed Technology Stack (not implemented)
 
-Shown in **Architecture** page with implementation status:
+Shown in **Architecture** page as a proposed design:
 
-- ✅ **FastAPI + LiteLLM** - Unified interface to many providers
-- ✅ **Redis** - Rate limits, caching, real-time counters
-- ✅ **PostgreSQL** - Historical usage and cost attribution
-- ✅ **MiniLM Classifier** - Fine-tuned complexity classification
-- ✅ **Rules Engine** - Heuristic-based fallback
-- ✅ **Prometheus + Grafana** - Marked as optional (monitoring)
+- Proposed FastAPI + LiteLLM provider gateway
+- Proposed Redis and PostgreSQL data services
+- Proposed classifier and rules engine
+- Optional future monitoring with Prometheus + Grafana
 
 ---
 
-### ✅ Detailed Implementation Steps (All 8 Steps Tracked)
+### Backend Roadmap (all steps planned)
 
-All 8 implementation steps shown in **Architecture** page with completion status:
+The **Architecture** page lists these proposed steps:
 
-1. ✅ **Wrap multiple providers** behind /chat/completions endpoint using LiteLLM
-2. ✅ **Build complexity classifier** with heuristics (length, keywords, code presence)
-3. ✅ **Maintain live pricing table** for each model
-4. ✅ **Implement routing policy** mapping complexity → models sorted by cost
-5. ✅ **Add token counting** and cost calculation with per-team budgets
-6. ✅ **Create background validator** sampling requests and measuring quality delta
-7. ✅ **Expose admin dashboard** showing savings vs always-using-GPT-4o
-8. ✅ **Add circuit breakers** and automatic fallback
+1. **Wrap multiple providers** behind a server-side API
+2. **Build a complexity classifier**
+3. **Maintain a verified pricing table**
+4. **Implement routing policy** using cost and quality constraints
+5. **Add token counting** and enforce per-team budgets
+6. **Create background validation**
+7. **Connect dashboard metrics to real data**
+8. **Add circuit breakers** and automatic fallback
 
 ---
 
@@ -143,7 +137,7 @@ From original requirements:
 
 ---
 
-## 📊 Complete Page Inventory (9 Pages)
+## 📊 Demo Page Inventory (9 Screens)
 
 1. **Dashboard** - Overview with 3D visualizations, live metrics, waterfall, anomaly detection
 2. **Routing** - Pipeline visualization, policy rules, live decisions
@@ -205,22 +199,20 @@ From original requirements:
 
 ## 🎉 Summary
 
-**All original requirements have been fully implemented and verified:**
+**The original checklist below describes demo UI placeholders, not verified integrations:**
 
-✅ 7 Key Features - All implemented  
+✅ 7 UI concepts - Shown as sample screens
 ✅ High-Level Architecture - Fully visualized  
 ✅ Technology Stack - Documented with status  
-✅ 8 Implementation Steps - All tracked as complete  
+✅ 8 backend steps - Roadmap only
 ✅ 5 Core Components - All displayed with metrics  
 ✅ 4 Evaluation Metrics - All shown  
 ✅ Portfolio Tips - All demonstrated  
 
-**Additional Production Features Added:**
-- Live Request Waterfall
-- Anomaly Detection
-- Export Reports (CSV/JSON)
-- Architecture visualization
-- Implementation progress tracking
-- Core components metrics
+**Additional demo UI features:**
+- Simulated Request Waterfall
+- Sample anomaly alerts
+- Export of displayed sample values (CSV/JSON)
+- Target architecture visualization and roadmap
 
-**The project is now a complete, production-grade LLM Cost Autopilot dashboard that fully satisfies all original requirements.**
+The current project is a frontend demo and does not satisfy backend or production-readiness requirements.

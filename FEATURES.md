@@ -1,49 +1,48 @@
-# 🚀 LLM Cost Autopilot - Complete Feature Overview
+# LLM Cost Autopilot - Demo Feature Overview
+
+> **Accuracy note:** This is a UI prototype, not a production LLM router. Metrics, routing decisions, provider statuses, budgets, anomalies, and charts use static or generated sample values. Provider calls, persistence, infrastructure monitoring, and budget enforcement are not implemented.
 
 ## ✅ What We've Built
 
-A **production-grade, industrial-level LLM cost optimization dashboard** with real data, advanced 3D visualizations, and enterprise features.
+A frontend prototype for LLM cost optimization concepts with 3D visualizations and sample data.
 
 ---
 
 ## 🎯 Core Features
 
-### 1. **Real Production Data**
-- ✅ Actual LLM provider pricing (OpenAI, Anthropic, Groq, Together AI, Local)
-- ✅ Realistic traffic patterns and routing decisions
-- ✅ Accurate cost calculations with real token-based pricing
-- ✅ Production-like team budgets and spend patterns
+### 1. **Illustrative Sample Data**
+- Example provider pricing, routing decisions, and team budgets
+- Synthetic metrics and request activity for visual demonstrations
 
 ### 2. **Advanced 3D Visualizations**
 - ✅ **3D Hero Scene**: Animated particle systems with physics
-- ✅ **Provider Network**: Interactive 3D topology with real-time status
+- ✅ **Provider Network**: Interactive 3D topology with sample status
 - ✅ **Cursor Particles**: Canvas-based particle trails
 - ✅ **3D Tilt Cards**: Perspective-aware cards with glare effects
 - ✅ **Holographic Borders**: Animated gradient borders
 
-### 3. **Live Monitoring**
-- ✅ **6 Real-Time Metrics**: Requests/min, latency, cost, cache hit rate, error rate, active models
-- ✅ **Live Sparklines**: Inline SVG charts for each metric
-- ✅ **Request Waterfall**: See requests flowing through the system in real-time
-- ✅ **Anomaly Detection**: ML-based monitoring for unusual patterns
+### 3. **Simulated Monitoring**
+- Animated example metrics and sparklines
+- Simulated request waterfall
+- Rule-based illustrative anomaly alerts (not connected to monitoring data)
 
-### 4. **8 Complete Pages**
+### 4. **9 Demo Screens**
 
 #### 📊 Dashboard
 - 3D hero scene with animated particles
-- Live metrics bar with sparklines
+- Simulated metrics bar with sparklines
 - 3D provider network topology
 - Cost savings charts
 - Complexity distribution
 - Model usage breakdown
-- **NEW**: Live Request Waterfall
+- **NEW**: Simulated Request Waterfall
 - **NEW**: Anomaly Detection
 - **NEW**: Export Panel
 
 #### 🔀 Routing
-- Real-time routing pipeline visualization
+- Simulated routing pipeline visualization
 - Complexity classification with confidence scores
-- Live routing decisions table
+- Sample routing decisions table
 - Fallback chain management
 - Circuit breaker status
 
@@ -86,10 +85,10 @@ A **production-grade, industrial-level LLM cost optimization dashboard** with re
 
 ---
 
-## 🆕 New Production Features
+## Demo features
 
-### **Live Request Waterfall**
-- Real-time visualization of requests flowing through the system
+### **Simulated Request Waterfall**
+- Illustrative animation of requests flowing through a mock pipeline
 - Shows each stage: Pending → Classifying → Routing → Executing → Complete
 - Displays tokens, cost, latency, and quality scores
 - Pause/resume functionality
@@ -153,7 +152,7 @@ src/
 ```
 
 ### **Real Pricing Data**
-All pricing reflects actual LLM provider rates (2024):
+The following are sample historical price assumptions, not verified current rates:
 - **GPT-4o**: $5/1M input, $15/1M output
 - **GPT-4o Mini**: $0.15/1M input, $0.60/1M output
 - **Claude 3.5 Sonnet**: $3/1M input, $15/1M output
@@ -163,7 +162,7 @@ All pricing reflects actual LLM provider rates (2024):
 
 ### **Cost Calculator**
 ```typescript
-// Real cost calculation with actual pricing
+// Estimate using the bundled example price table
 const cost = calculateCost('gpt-4o', 1000, 500);
 // Returns: { inputCost: 0.005, outputCost: 0.0075, totalCost: 0.0125 }
 ```
@@ -205,29 +204,22 @@ const cost = calculateCost('gpt-4o', 1000, 500);
 
 ---
 
-## 📊 Production Metrics
+## 📊 Sample Metrics
 
-The dashboard displays real production metrics:
-- **Requests per minute**: Live count with trend
-- **Average latency**: Real-time latency tracking
-- **Cost per minute**: Actual spend tracking
-- **Active models**: Currently routed models
-- **Cache hit rate**: Redis cache performance
-- **Error rate**: System error monitoring
+The dashboard generates illustrative values for requests, latency, cost, models, cache, and errors. These are not connected to production services.
 
 ---
 
-## 🚀 Key Differentiators
+## Frontend behavior
 
-### **What Makes This Production-Grade:**
+### What works in this prototype
 
-1. **Real Data**: No dummy data - actual LLM pricing and realistic patterns
-2. **Real Cost Calculator**: Accurate token-based cost computation
-3. **Real API Layer**: Production-ready Axios client with auth
-4. **Real TypeScript Types**: Interfaces matching actual APIs
-5. **Real Utility Functions**: Actual cost calculation logic
-6. **Real Monitoring**: Live metrics with actual update patterns
-7. **Real Anomaly Detection**: ML-based pattern recognition
+1. Static examples populate the dashboard screens
+2. Cost helpers calculate estimates using the bundled example rate table
+3. A reusable Axios client scaffold exists, but is not connected to a backend
+4. TypeScript models describe anticipated provider/request payloads
+5. Metrics and request activity are simulated locally
+6. Anomaly cards are illustrative rules and do not analyze live telemetry
 8. **Real Export**: Actual CSV/JSON file generation
 9. **Real Request Tracing**: Full lifecycle visualization
 10. **Real 3D Visualizations**: Interactive Three.js scenes
@@ -274,23 +266,22 @@ Complete README.md with:
 
 ## 🎉 Summary
 
-This is a **complete, production-grade LLM cost optimization dashboard** with:
+This is an interactive **frontend demo** with:
 
-✅ Real LLM pricing and data  
+✅ Example pricing and sample data
 ✅ Advanced 3D visualizations  
-✅ Live monitoring and metrics  
+✅ Simulated monitoring and metrics
 ✅ Anomaly detection  
 ✅ Export functionality  
 ✅ Request tracing  
 ✅ Keyboard shortcuts  
 ✅ Command palette  
 ✅ Toast notifications  
-✅ 8 complete pages  
-✅ Production-ready architecture  
-✅ Enterprise-level engineering  
+✅ 9 demo screens
+✅ Lazy-loaded views and visualizations
 
-**No dummy data. No fake features. Everything is real and production-ready.**
+**This repository does not include a live backend or provider integration. See [README.md](./README.md) for current limitations and integration prerequisites.**
 
 ---
 
-**Built with ❤️ for production LLM cost optimization**
+**Built as an LLM cost-optimization UI prototype**

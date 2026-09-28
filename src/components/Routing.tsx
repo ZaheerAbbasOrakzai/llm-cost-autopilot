@@ -164,17 +164,17 @@ export default function Routing() {
           </div>
         </motion.div>
 
-        {/* Live Routing Decisions Table */}
+        {/* Sample Routing Decisions Table */}
         <motion.div variants={item} className="xl:col-span-2 bg-[#12141c] border border-white/5 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="font-semibold text-sm">Live Routing Decisions</h3>
-              <p className="text-xs text-gray-500 mt-0.5">Real-time model selection log</p>
+              <h3 className="font-semibold text-sm">Sample Routing Decisions</h3>
+              <p className="text-xs text-gray-500 mt-0.5">Illustrative model selection records</p>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 rounded-lg">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-[10px] font-medium text-emerald-400">Streaming</span>
+                <span className="text-[10px] font-medium text-amber-300">Sample data</span>
               </div>
             </div>
           </div>

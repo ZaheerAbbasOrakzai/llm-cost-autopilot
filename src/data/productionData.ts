@@ -1,9 +1,8 @@
-// Production-grade data with real LLM pricing and realistic traffic patterns
-// This represents actual production data from a real LLM routing system
+// Sample structures and illustrative data for the demo; values are not live telemetry.
 
 import { LLMProvider, RoutingDecision, Team, ValidationResult, RoutingPolicy, Alert } from '../types';
 
-// Real provider data with actual pricing (as of 2024)
+// Example provider catalog and approximate historical pricing; verify rates before use.
 export const providers: LLMProvider[] = [
   {
     id: 'openai',
@@ -127,7 +126,7 @@ export const providers: LLMProvider[] = [
   },
 ];
 
-// Realistic routing decisions based on actual production traffic
+// Synthetic routing decisions for display only.
 export const routingDecisions: RoutingDecision[] = [
   {
     id: 'req_8f7a6b5c4d3e2f1a',
@@ -190,7 +189,7 @@ export const routingDecisions: RoutingDecision[] = [
   },
 ];
 
-// Real team data with actual budget patterns
+// Synthetic team budgets for display only.
 export const teams: Team[] = [
   {
     id: 'team_eng_001',
@@ -221,7 +220,7 @@ export const teams: Team[] = [
   },
 ];
 
-// Real validation results
+// Synthetic validation results for display only.
 export const validationResults: ValidationResult[] = [
   {
     id: 'val_001',

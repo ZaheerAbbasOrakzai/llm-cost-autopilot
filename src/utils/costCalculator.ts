@@ -9,7 +9,9 @@ export interface CostCalculation {
   totalTokens: number;
 }
 
-// Actual pricing per 1M tokens (converted to per 1K for calculations)
+import { addMonths } from 'date-fns';
+
+// Example price assumptions per 1M tokens; verify provider rates before use.
 export const MODEL_PRICING = {
   'gpt-4o': { input: 5.0, output: 15.0 }, // $5/1M input, $15/1M output
   'gpt-4o-mini': { input: 0.15, output: 0.60 },
@@ -33,18 +35,13 @@ export function calculateCost(
   inputTokens: number,
   outputTokens: number
 ): CostCalculation {
+  validateTokenCount('inputTokens', inputTokens);
+  validateTokenCount('outputTokens', outputTokens);
+
   const pricing = MODEL_PRICING[model as keyof typeof MODEL_PRICING];
   
   if (!pricing) {
-    console.warn(`Unknown model: ${model}, using default pricing`);
-    return {
-      inputCost: 0,
-      outputCost: 0,
-      totalCost: 0,
-      inputTokens,
-      outputTokens,
-      totalTokens: inputTokens + outputTokens,
-    };
+    throw new RangeError(`Unknown model pricing: ${model}`);
   }
 
   // Pricing is per 1M tokens, convert to per token
@@ -75,11 +72,22 @@ export function calculateSavings(
   inputTokens: number,
   outputTokens: number
 ): number {
+  if (!Number.isFinite(actualCost) || actualCost < 0) {
+    throw new RangeError('actualCost must be a finite, non-negative number');
+  }
+
   const baselineCost = calculateCost(baselineModel, inputTokens, outputTokens);
   return baselineCost.totalCost - actualCost;
 }
 
 export function calculateMonthlyProjection(dailyCost: number, daysInMonth: number = 30): number {
+  if (!Number.isFinite(dailyCost) || dailyCost < 0) {
+    throw new RangeError('dailyCost must be a finite, non-negative number');
+  }
+  if (!Number.isInteger(daysInMonth) || daysInMonth <= 0) {
+    throw new RangeError('daysInMonth must be a positive integer');
+  }
+
   return dailyCost * daysInMonth;
 }
 
@@ -88,16 +96,28 @@ export function calculateROI(initialInvestment: number, monthlySavings: number):
   annualROI: number;
   breakEvenDate: Date;
 } {
+  if (!Number.isFinite(initialInvestment) || initialInvestment <= 0) {
+    throw new RangeError('initialInvestment must be a finite, positive number');
+  }
+  if (!Number.isFinite(monthlySavings) || monthlySavings <= 0) {
+    throw new RangeError('monthlySavings must be a finite, positive number');
+  }
+
   const paybackMonths = initialInvestment / monthlySavings;
   const annualSavings = monthlySavings * 12;
   const annualROI = ((annualSavings - initialInvestment) / initialInvestment) * 100;
   
-  const breakEvenDate = new Date();
-  breakEvenDate.setMonth(breakEvenDate.getMonth() + Math.ceil(paybackMonths));
+  const breakEvenDate = addMonths(new Date(), Math.ceil(paybackMonths));
 
   return {
     paybackMonths,
     annualROI,
     breakEvenDate,
   };
+}
+
+function validateTokenCount(name: string, value: number): void {
+  if (!Number.isInteger(value) || value < 0) {
+    throw new RangeError(`${name} must be a non-negative integer`);
+  }
 }

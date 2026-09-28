@@ -18,22 +18,22 @@ const techStack = [
   {
     category: 'API Layer',
     items: [
-      { name: 'FastAPI', description: 'High-performance API gateway', status: 'implemented' },
-      { name: 'LiteLLM', description: 'Unified interface to 100+ LLM providers', status: 'implemented' },
+      { name: 'FastAPI', description: 'Proposed API gateway; no backend is included', status: 'planned' },
+      { name: 'LiteLLM', description: 'Proposed provider gateway; no provider calls are made', status: 'planned' },
     ]
   },
   {
     category: 'Data Layer',
     items: [
-      { name: 'PostgreSQL', description: 'Historical usage and cost attribution', status: 'implemented' },
-      { name: 'Redis', description: 'Rate limits, caching, real-time counters', status: 'implemented' },
+      { name: 'PostgreSQL', description: 'Proposed usage and cost store', status: 'planned' },
+      { name: 'Redis', description: 'Proposed cache and rate-limit store', status: 'planned' },
     ]
   },
   {
     category: 'Intelligence',
     items: [
-      { name: 'MiniLM Classifier', description: 'Fine-tuned complexity classification', status: 'implemented' },
-      { name: 'Rules Engine', description: 'Heuristic-based fallback classifier', status: 'implemented' },
+      { name: 'MiniLM Classifier', description: 'Proposed model-based complexity classification', status: 'planned' },
+      { name: 'Rules Engine', description: 'Proposed heuristic classifier', status: 'planned' },
     ]
   },
   {
@@ -50,48 +50,48 @@ const coreComponents = [
     name: 'RouterPolicy',
     description: 'Maps complexity to candidate models sorted by cost, filtered by quality floor',
     icon: GitBranch,
-    status: 'active',
-    metrics: { decisions: '142.1K', avgLatency: '47ms', accuracy: '99.2%' }
+    status: 'planned',
+    metrics: { decisions: 'Sample', avgLatency: 'Sample', accuracy: 'Sample' }
   },
   {
     name: 'ComplexityClassifier',
     description: 'Estimates request complexity using MiniLM model + heuristic rules',
     icon: Brain,
-    status: 'active',
-    metrics: { classifications: '142.1K', accuracy: '94.7%', avgTime: '23ms' }
+    status: 'planned',
+    metrics: { classifications: 'Sample', accuracy: 'Sample', avgTime: 'Sample' }
   },
   {
     name: 'CostTracker',
     description: 'Real-time token counting, cost calculation, and budget enforcement',
     icon: Zap,
-    status: 'active',
-    metrics: { tracked: '$67.7K', savings: '$25.8K', teams: '5' }
+    status: 'planned',
+    metrics: { tracked: 'Sample', savings: 'Sample', teams: 'Sample' }
   },
   {
     name: 'ProviderHealthMonitor',
     description: 'Circuit breakers, health checks, and automatic failover',
     icon: Shield,
-    status: 'active',
-    metrics: { providers: '5', uptime: '99.8%', failovers: '23' }
+    status: 'planned',
+    metrics: { providers: 'Sample', uptime: 'Sample', failovers: 'Sample' }
   },
   {
     name: 'ValidationSampler',
     description: 'Background job sampling traffic and comparing against stronger models',
     icon: Activity,
-    status: 'active',
-    metrics: { samples: '7.1K', passRate: '94.2%', interval: '5min' }
+    status: 'planned',
+    metrics: { samples: 'Sample', passRate: 'Sample', interval: 'Sample' }
   },
 ];
 
 const implementationSteps = [
-  { step: 1, title: 'Multi-Provider Gateway', description: 'Wrap providers behind /chat/completions endpoint using LiteLLM', status: 'complete' },
-  { step: 2, title: 'Complexity Classifier', description: 'Build classifier with heuristics (length, keywords, code presence)', status: 'complete' },
-  { step: 3, title: 'Live Pricing Table', description: 'Maintain pricing + latency + availability table for each model', status: 'complete' },
-  { step: 4, title: 'Routing Policy', description: 'Map complexity → models sorted by cost, filtered by quality floor', status: 'complete' },
-  { step: 5, title: 'Token & Cost Tracking', description: 'Add token counting, cost calculation, per-team budgets', status: 'complete' },
-  { step: 6, title: 'Background Validator', description: 'Sample requests, re-run on stronger model, measure quality delta', status: 'complete' },
-  { step: 7, title: 'Admin Dashboard', description: 'Expose metrics showing savings vs always-using-GPT-4o', status: 'complete' },
-  { step: 8, title: 'Circuit Breakers', description: 'Add automatic fallback when provider fails or rate-limits', status: 'complete' },
+  { step: 1, title: 'Multi-Provider Gateway', description: 'Proposed server-side provider gateway', status: 'planned' },
+  { step: 2, title: 'Complexity Classifier', description: 'Proposed classifier with heuristics and model signals', status: 'planned' },
+  { step: 3, title: 'Pricing Table', description: 'Maintain verified pricing, latency, and availability data', status: 'planned' },
+  { step: 4, title: 'Routing Policy', description: 'Select candidate models under cost and quality constraints', status: 'planned' },
+  { step: 5, title: 'Token & Cost Tracking', description: 'Record usage and enforce per-team budgets', status: 'planned' },
+  { step: 6, title: 'Background Validator', description: 'Compare outputs and measure quality deltas', status: 'planned' },
+  { step: 7, title: 'Admin Dashboard', description: 'Connect dashboards to persisted service metrics', status: 'planned' },
+  { step: 8, title: 'Circuit Breakers', description: 'Fail over when providers fail or rate-limit', status: 'planned' },
 ];
 
 export default function Architecture() {
@@ -99,7 +99,8 @@ export default function Architecture() {
     <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
       {/* System Architecture */}
       <motion.div variants={item} className="bg-[#12141c] border border-white/5 rounded-2xl p-6">
-        <h3 className="font-semibold text-sm mb-4">High-Level System Architecture</h3>
+        <h3 className="font-semibold text-sm mb-1">Proposed System Architecture</h3>
+        <p className="text-xs text-amber-300 mb-4">Target design only; backend services are not included or connected.</p>
         <div className="relative">
           <svg viewBox="0 0 1000 400" className="w-full h-auto">
             {/* Background grid */}
@@ -301,7 +302,8 @@ export default function Architecture() {
 
       {/* Core Components */}
       <motion.div variants={item} className="bg-[#12141c] border border-white/5 rounded-2xl p-6">
-        <h3 className="font-semibold text-sm mb-4">Core Components</h3>
+        <h3 className="font-semibold text-sm mb-1">Planned Core Components</h3>
+        <p className="text-xs text-gray-500 mb-4">Displayed figures are placeholders, not measured service metrics.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {coreComponents.map((component) => (
             <motion.div
@@ -320,8 +322,8 @@ export default function Architecture() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[9px] text-emerald-400 font-medium">{component.status}</span>
+                  <div className="w-2 h-2 rounded-full bg-gray-500" />
+                  <span className="text-[9px] text-gray-400 font-medium">{component.status}</span>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2 pt-3 border-t border-white/5">
@@ -339,7 +341,8 @@ export default function Architecture() {
 
       {/* Implementation Progress */}
       <motion.div variants={item} className="bg-[#12141c] border border-white/5 rounded-2xl p-6">
-        <h3 className="font-semibold text-sm mb-4">Implementation Progress</h3>
+        <h3 className="font-semibold text-sm mb-1">Implementation Roadmap</h3>
+        <p className="text-xs text-gray-500 mb-4">These backend capabilities are planned and not implemented in this repository.</p>
         <div className="space-y-3">
           {implementationSteps.map((step) => (
             <div key={step.step} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
@@ -381,7 +384,7 @@ export default function Architecture() {
               <p className="text-[10px] text-gray-500 uppercase tracking-wider">Cost Reduction</p>
             </div>
             <p className="text-2xl font-bold text-emerald-400">54.2%</p>
-            <p className="text-[10px] text-gray-500 mt-1">vs always using GPT-4o</p>
+            <p className="text-[10px] text-gray-500 mt-1">illustrative demo value</p>
           </div>
 
           <div className="bg-gradient-to-br from-violet-500/10 to-violet-500/5 border border-violet-500/20 rounded-xl p-4">

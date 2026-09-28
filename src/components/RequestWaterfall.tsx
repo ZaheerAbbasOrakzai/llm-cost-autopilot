@@ -80,9 +80,9 @@ export default function RequestWaterfall() {
         <div>
           <h3 className="font-semibold text-sm flex items-center gap-2">
             <Activity className="w-4 h-4 text-violet-400" />
-            Live Request Waterfall
+            Simulated Request Waterfall
           </h3>
-          <p className="text-xs text-gray-500 mt-0.5">Real-time request flow through the routing pipeline</p>
+          <p className="text-xs text-gray-500 mt-0.5">Illustrative requests; this demo does not call an LLM provider</p>
         </div>
         <button
           onClick={() => setIsLive(!isLive)}
@@ -92,7 +92,7 @@ export default function RequestWaterfall() {
               : 'bg-white/5 text-gray-400 border border-white/10'
           }`}
         >
-          {isLive ? '● Live' : '○ Paused'}
+          {isLive ? '● Simulation on' : '○ Paused'}
         </button>
       </div>
 

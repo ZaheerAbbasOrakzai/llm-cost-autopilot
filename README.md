@@ -1,56 +1,38 @@
-# LLM Cost Autopilot - Production Dashboard
+# LLM Cost Autopilot
 
-A production-grade intelligent routing dashboard for LLM cost optimization with real-time monitoring, 3D visualizations, and advanced analytics.
+An interactive frontend prototype for exploring LLM cost routing, estimates, and dashboard concepts.
 
-## 🚀 Production Features
+> **Demo only:** this repository contains a React/Vite frontend. Its dashboard, provider status, request waterfall, costs, budgets, and alerts use hard-coded or simulated sample data. It does not connect to LLM providers, route real requests, monitor real infrastructure, persist settings, or enforce budgets. Do not use its estimates for billing or operational decisions.
 
-### Real Data Architecture
-- **Actual LLM Pricing**: Real pricing from OpenAI, Anthropic, Groq, Together AI (as of 2024)
-- **Realistic Traffic Patterns**: Production-like request volumes and complexity distributions
-- **Accurate Cost Calculations**: Precise token-based cost tracking with real provider rates
-- **Live Metrics**: Real-time system metrics with actual monitoring data
+Provider/model rates in the sample catalog are illustrative historical reference values, not a maintained price feed. Verify current provider pricing before using the cost calculator.
 
-### Advanced 3D Visualizations
-- **Interactive Provider Network**: 3D topology with real-time status indicators
-- **Hero Scene**: Animated particle systems with physics-based motion
-- **Cursor Particles**: Canvas-based particle trails following user interaction
-- **3D Tilt Cards**: Perspective-aware cards with glare effects
+## Features
 
-### Industrial-Grade Engineering
-- **TypeScript**: Full type safety with real TypeScript interfaces
-- **React Query**: Production data fetching with caching and invalidation
-- **Zustand**: Global state management
-- **WebSocket Support**: Real-time data streaming architecture
-- **Circuit Breakers**: Automatic failover and health monitoring
-- **Cost Calculator**: Real utility functions for accurate cost computation
-
-### Premium UX
-- **Command Palette** (⌘K): Keyboard-driven navigation
-- **Keyboard Shortcuts**: Power user shortcuts for all pages
-- **Toast Notifications**: Context-aware feedback system
-- **Live Metrics Bar**: 6 real-time metrics with sparklines
-- **Responsive Design**: Mobile to desktop optimization
+- Interactive dashboard and routing visualizations populated with sample values
+- Example provider catalog, cost calculation helpers, and routing-policy screens
+- Simulated request waterfall and playground (no network calls)
+- 3D visualizations, charts, command palette, and keyboard navigation
+- Lazy-loaded views and visualizations to reduce initial JavaScript
 
 ## 📊 Pages
 
 ### 1. Dashboard
 - 3D hero scene with animated particles
-- Live metrics bar (requests/min, latency, cost, cache hit rate, error rate)
+- Simulated metrics bar (requests/min, latency, cost, cache hit rate, error rate)
 - 3D provider network topology
-- Cost savings charts with real data
+- Cost savings charts with sample data
 - Complexity distribution analysis
 - Model usage breakdown
 
 ### 2. Routing
-- Real-time routing pipeline visualization
+- Simulated routing pipeline visualization
 - Complexity classification with confidence scores
-- Live routing decisions table
+- Sample routing decisions table
 - Fallback chain management
 - Circuit breaker status
 
 ### 3. Providers
-- Real provider health monitoring
-- Actual pricing tables (OpenAI, Anthropic, Groq, Together, Local)
+- Sample provider health and pricing data (OpenAI, Anthropic, Groq, Together, Local)
 - Model comparison with quality scores
 - Latency and uptime tracking
 
@@ -85,26 +67,21 @@ A production-grade intelligent routing dashboard for LLM cost optimization with 
 - Budget enforcement settings
 - Provider configuration
 
-## 🏗️ Architecture
+## 🏗️ Frontend Architecture
 
 ### Data Layer
 ```
 src/
 ├── types/              # Real TypeScript interfaces
-│   └── index.ts       # Production types matching real APIs
-├── api/               # Real API service layer
-│   └── client.ts      # Axios client with auth interceptors
-├── data/              # Production-grade data
-│   ├── mockData.ts    # Real pricing and realistic patterns
-│   └── productionData.ts  # Production data structures
-├── utils/             # Real utility functions
-│   └── costCalculator.ts  # Actual cost calculation logic
-└── hooks/             # Real data fetching hooks
-    └── useLiveMetrics.tsx  # Live metrics with real updates
+│   └── index.ts       # Frontend data types
+├── api/               # Unused API client scaffold; no backend is included
+├── data/              # Static sample data, not production telemetry
+├── utils/             # Cost-estimation helpers using the sample price table
+└── hooks/             # Simulated metrics and request feed
 ```
 
-### Real Pricing Data
-All pricing reflects actual LLM provider rates (2024):
+### Sample Price Assumptions
+These values are examples from an old price snapshot and are not guaranteed current:
 - **GPT-4o**: $5/1M input, $15/1M output
 - **GPT-4o Mini**: $0.15/1M input, $0.60/1M output
 - **Claude 3.5 Sonnet**: $3/1M input, $15/1M output
@@ -114,7 +91,7 @@ All pricing reflects actual LLM provider rates (2024):
 
 ### Cost Calculation
 ```typescript
-// Real cost calculation with actual pricing
+// Estimate using the bundled example price table
 const cost = calculateCost('gpt-4o', 1000, 500);
 // Returns: { inputCost: 0.005, outputCost: 0.0075, totalCost: 0.0125 }
 ```
@@ -185,15 +162,9 @@ npm run preview
 VITE_API_URL=http://localhost:8000  # Backend API URL
 ```
 
-## 📈 Production Metrics
+## 📈 Demo Metrics
 
-The dashboard displays real production metrics:
-- **Requests per minute**: Live count with trend
-- **Average latency**: Real-time latency tracking
-- **Cost per minute**: Actual spend tracking
-- **Active models**: Currently routed models
-- **Cache hit rate**: Redis cache performance
-- **Error rate**: System error monitoring
+The dashboard animates simulated values for requests/minute, latency, cost/minute, active models, cache hit rate, and error rate. These numbers do not come from a running service.
 
 ## 🎯 Key Features
 
@@ -205,11 +176,9 @@ The dashboard displays real production metrics:
 - Circuit breaker protection
 
 ### Cost Optimization
-- 54% average cost reduction vs baseline
-- Real-time cost tracking
-- Budget enforcement per team
-- Savings attribution
-- ROI calculation
+- Illustrative cost comparisons
+- Sample budget and savings views
+- Input-validated cost and ROI helper functions
 
 ### Quality Assurance
 - Continuous validation sampling
@@ -225,14 +194,18 @@ The dashboard displays real production metrics:
 - Performance degradation detection
 - Circuit breaker notifications
 
+## Backend integration status
+
+No backend, authentication flow, database, live pricing feed, WebSocket service, or provider integration is included. `VITE_API_URL` is only a placeholder for a future backend; setting it does not make this frontend connect to one. A production deployment requires a secure server-side provider integration, credentials kept off the client, real telemetry/storage, and verified pricing.
+
 ## 📝 License
 
-MIT License - Production-ready for commercial use
+MIT License
 
 ## 🤝 Contributing
 
-This is a production-grade application built with enterprise-level engineering practices. All data reflects real LLM provider pricing and realistic traffic patterns.
+Contributions that clearly distinguish working behavior from demo data are welcome.
 
 ---
 
-**Built with ❤️ for production LLM cost optimization**
+**Built as an LLM cost-optimization UI prototype**

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { 
   DollarSign, TrendingDown, Zap, Target, ArrowUpRight, ArrowDownRight,
@@ -5,13 +6,14 @@ import {
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
 import { costHistory, modelUsageData, complexityDistribution, routingDecisions } from '../data/mockData';
-import HeroScene3D from './three/HeroScene3D';
-import ProviderNetwork3D from './three/ProviderNetwork3D';
 import { TiltCard, HoloCard } from './ui/Effects';
 import { useLiveMetrics, Sparkline } from '../hooks/useLiveMetrics';
 import RequestWaterfall from './RequestWaterfall';
 import ExportPanel from './ExportPanel';
 import AnomalyDetection from './AnomalyDetection';
+
+const HeroScene3D = lazy(() => import('./three/HeroScene3D'));
+const ProviderNetwork3D = lazy(() => import('./three/ProviderNetwork3D'));
 
 const container = {
   hidden: { opacity: 0 },
@@ -30,7 +32,9 @@ export default function Dashboard() {
     <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
       {/* 3D Hero Section */}
       <motion.div variants={item} className="relative overflow-hidden rounded-2xl">
-        <HeroScene3D />
+        <Suspense fallback={<div className="h-64 bg-[#12141c]" role="status">Loading visualization…</div>}>
+          <HeroScene3D />
+        </Suspense>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center">
             <motion.h1
@@ -47,13 +51,13 @@ export default function Dashboard() {
               transition={{ delay: 0.8 }}
               className="text-gray-400 text-sm md:text-base"
             >
-              Intelligent routing • 54% cost reduction • Real-time optimization
+              Interactive routing demo • Illustrative estimates • No live provider connection
             </motion.p>
           </div>
         </div>
       </motion.div>
 
-      {/* Live Metrics Bar */}
+      {/* Simulated Metrics Bar */}
       <motion.div variants={item} className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
         {[
           { label: 'Requests/min', value: liveMetrics.requestsPerMin.value, unit: '', icon: Radio, color: 'text-violet-400', trend: liveMetrics.requestsPerMin.trend, trendColor: '#8b5cf6' },
@@ -138,7 +142,9 @@ export default function Dashboard() {
                 <span className="text-[10px] font-medium text-emerald-400">5 Providers Active</span>
               </div>
             </div>
-            <ProviderNetwork3D />
+            <Suspense fallback={<div className="h-64 bg-[#12141c]" role="status">Loading provider network…</div>}>
+              <ProviderNetwork3D />
+            </Suspense>
           </div>
         </HoloCard>
       </motion.div>
@@ -274,7 +280,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 rounded-lg">
                   <Activity className="w-3 h-3 text-emerald-400" />
-                  <span className="text-[10px] font-medium text-emerald-400">Live</span>
+                  <span className="text-[10px] font-medium text-amber-300">Sample</span>
                 </div>
               </div>
               <div className="space-y-2 max-h-[280px] overflow-y-auto pr-2">
@@ -305,7 +311,7 @@ export default function Dashboard() {
         </motion.div>
       </div>
 
-      {/* Live Request Waterfall */}
+      {/* Simulated Request Waterfall */}
       <motion.div variants={item}>
         <RequestWaterfall />
       </motion.div>

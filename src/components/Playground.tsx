@@ -134,8 +134,8 @@ export default function Playground() {
       { id: 'receive', label: 'Request Received', icon: Terminal, status: 'pending' },
       { id: 'classify', label: 'Complexity Classification', icon: Brain, status: 'pending' },
       { id: 'route', label: 'Model Selection', icon: GitBranch, status: 'pending' },
-      { id: 'execute', label: 'LLM Execution', icon: Zap, status: 'pending' },
-      { id: 'record', label: 'Cost Recorded', icon: DollarSign, status: 'pending' },
+      { id: 'execute', label: 'Simulated Provider Response', icon: Zap, status: 'pending' },
+      { id: 'record', label: 'Estimated Cost', icon: DollarSign, status: 'pending' },
     ];
     setSteps(initialSteps);
 
@@ -204,7 +204,7 @@ export default function Playground() {
             <Sparkles className="w-4 h-4 text-violet-400" />
             <h3 className="text-lg font-semibold">API Playground</h3>
           </div>
-          <p className="text-xs text-gray-500">Test routing decisions interactively — see how the autopilot classifies and routes your requests</p>
+          <p className="text-xs text-gray-500">Explore illustrative routing estimates; requests are not sent to an LLM provider</p>
         </div>
       </div>
 
@@ -282,7 +282,7 @@ export default function Playground() {
                 <Terminal className="w-8 h-8 text-gray-600" />
               </div>
               <p className="text-sm text-gray-400">Submit a request to see the routing pipeline</p>
-              <p className="text-xs text-gray-600 mt-1">Each step will animate in real-time</p>
+              <p className="text-xs text-gray-600 mt-1">Each simulated step is illustrative, not a live provider call</p>
             </div>
           ) : (
             <div className="space-y-2">

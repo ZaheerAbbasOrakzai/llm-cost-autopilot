@@ -1,18 +1,19 @@
-import { useState, useEffect, useCallback } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Route, Server, Users, ShieldCheck, Settings, Layers,
-  Menu, Zap, Bell, ChevronDown, BarChart3, Terminal, Search, Keyboard
+  Menu, Zap, Bell, ChevronDown, BarChart3, Terminal, Search, Keyboard,
+  FlaskConical
 } from 'lucide-react';
-import Dashboard from './components/Dashboard';
-import Routing from './components/Routing';
-import Providers from './components/Providers';
-import Teams from './components/Teams';
-import Validation from './components/Validation';
-import SettingsPage from './components/Settings';
-import Playground from './components/Playground';
-import CostAnalysis from './components/CostAnalysis';
-import Architecture from './components/Architecture';
+const Dashboard = lazy(() => import('./components/Dashboard'));
+const Routing = lazy(() => import('./components/Routing'));
+const Providers = lazy(() => import('./components/Providers'));
+const Teams = lazy(() => import('./components/Teams'));
+const Validation = lazy(() => import('./components/Validation'));
+const SettingsPage = lazy(() => import('./components/Settings'));
+const Playground = lazy(() => import('./components/Playground'));
+const CostAnalysis = lazy(() => import('./components/CostAnalysis'));
+const Architecture = lazy(() => import('./components/Architecture'));
 import CommandPalette from './components/CommandPalette';
 import { ToastProvider, useToast } from './components/ui/Toast';
 import CursorParticles from './components/ui/CursorParticles';
@@ -109,8 +110,8 @@ function AppContent() {
     const timer = setTimeout(() => {
       addToast({
         type: 'success',
-        title: 'System Online',
-        message: 'LLM Cost Autopilot is running. Press ⌘K for commands.',
+        title: 'Demo ready',
+        message: 'This dashboard uses sample data; no live provider requests are sent. Press ⌘K for commands.',
         duration: 4000,
       });
     }, 1500);
@@ -208,9 +209,9 @@ function AppContent() {
             <div className="bg-gradient-to-r from-emerald-500/10 to-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-medium text-emerald-400">System Active</span>
+                <span className="text-xs font-medium text-amber-400">Demo mode</span>
               </div>
-              <p className="text-xs text-gray-400">5 providers • 13 models • 99.8% uptime</p>
+              <p className="text-xs text-gray-400">Sample metrics • no backend connected</p>
               <button
                 onClick={() => setShortcutsOpen(true)}
                 className="mt-3 flex items-center gap-1.5 text-[10px] text-gray-500 hover:text-white transition-colors"
@@ -252,6 +253,10 @@ function AppContent() {
               </div>
 
               <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-lg text-[10px] font-medium text-amber-300">
+                  <FlaskConical className="w-3 h-3" />
+                  DEMO DATA
+                </div>
                 {/* Command Palette Trigger */}
                 <button
                   onClick={() => setCommandPaletteOpen(true)}
@@ -341,7 +346,13 @@ function AppContent() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                {renderContent()}
+                <Suspense fallback={
+                  <div className="flex min-h-64 items-center justify-center text-sm text-gray-400" role="status">
+                    Loading view…
+                  </div>
+                }>
+                  {renderContent()}
+                </Suspense>
               </motion.div>
             </AnimatePresence>
           </div>
