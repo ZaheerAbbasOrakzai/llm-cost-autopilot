@@ -40,7 +40,7 @@ Provider/model rates in the sample catalog are illustrative historical reference
 |:---:|:---:|
 | <img src="assets/thumbnail-dashboard.svg" alt="Dashboard with animated metric cards, cost savings charts, routing decisions table, and 3D tilt card" width="100%" /> | <img src="assets/thumbnail-effects.svg" alt="TiltCard with glare, HoloCard with animated gradient border, cursor particle system, and animated number counters" width="100%" /> |
 
-> Each thumbnail above is an SVG rendering of the actual component visual design. Run `npm run dev` to experience the live real-time 3D animations and interactive effects in your browser.
+> 📸 **Screenshot Gallery**: High-resolution PNG renders of each thumbnail are also available in [`assets/`](assets/) for presentations and demos. Run `npm run dev` to experience the live real-time 3D animations and interactive effects in your browser.
 
 ## 📊 Pages
 
@@ -303,6 +303,19 @@ Rendered globally via `<CursorParticles />` in `App.tsx`:
 | Holographic border | Tailwind animated gradient | `Effects.tsx` → `HoloCard` |
 | Gradient text | CSS `bg-clip-text` | Dashboard hero heading |
 | Glass-morphism cards | `backdrop-blur` + `bg-white/[0.02]` | All metric cards |
+
+#### Thumbnail Assets
+
+| File | Format | Purpose |
+|---|---|---|
+| `thumbnail-hero-scene.svg` | SVG | Hero scene preview (icosahedron, rings, particles) |
+| `thumbnail-provider-network.svg` | SVG | Provider topology preview |
+| `thumbnail-provider-network.svg.png` | PNG render | Hi-res PNG for external use |
+| `thumbnail-dashboard.svg` | SVG | Dashboard overview preview |
+| `thumbnail-dashboard.svg.png` | PNG render | Hi-res PNG for external use |
+| `thumbnail-effects.svg` | SVG | Effects & micro-interactions preview |
+| `thumbnail-effects.svg.png` | PNG render | Hi-res PNG for external use |
+| `3D Hero Scene.png` | PNG screenshot | Full-resolution hero scene capture |
 
 ### 7. Rendering Architecture
 
