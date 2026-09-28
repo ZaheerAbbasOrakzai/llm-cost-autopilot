@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0b0f"/>
+      <stop offset="1" stop-color="#12141c"/>
+    </linearGradient>
+    <radialGradient id="nodeGlow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow3" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#06b6d4" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow4" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f59e0b" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+
+  <!-- Provider nodes (5) positioned in 3D-ish layout -->
+  <!-- OpenAI - healthy (green) - top -->
+  <g transform="translate(320,120)">
+    <circle cx="0" cy="0" r="30" fill="url(#nodeGlow1)" filter="blur(6px)"/>
+    <circle cx="0" cy="0" r="14" fill="#10b981" stroke="#10b981" stroke-width="2"/>
+    <circle cx="8" cy="-4" r="3" fill="#10b981"/>
+    <text x="0" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff">OpenAI</text>
+  </g>
+
+  <!-- Anthropic - healthy (violet) -->
+  <g transform="translate(440,180)">
+    <circle cx="0" cy="0" r="26" fill="url(#nodeGlow2)" filter="blur(5px)"/>
+    <circle cx="0" cy="0" r="12" fill="#8b5cf6" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="0" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Anthropic</text>
+  </g>
+
+  <!-- Groq - healthy (cyan) -->
+  <g transform="translate(200,180)">
+    <circle cx="0" cy="0" r="24" fill="url(#nodeGlow3)" filter="blur(5px)"/>
+    <circle cx="0" cy="0" r="11" fill="#06b6d4" stroke="#06b6d4" stroke-width="2"/>
+    <text x="0" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Groq</text>
+  </g>
+
+  <!-- Together - degraded (amber) -->
+  <g transform="translate(320,260)">
+    <circle cx="0" cy="0" r="26" fill="url(#nodeGlow4)" filter="blur(5px)"/>
+    <circle cx="0" cy="0" r="12" fill="#f59e0b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="0" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Together</text>
+  </g>
+
+  <!-- Local - healthy (gray) -->
+  <g transform="translate(320,200)">
+    <circle cx="0" cy="0" r="20" fill="url(#nodeGlow1)" filter="blur(4px)" opacity="0.4"/>
+    <circle cx="0" cy="0" r="9" fill="#6b7280" stroke="#6b7280" stroke-width="2"/>
+    <text x="0" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#9ca3af">Local</text>
+  </g>
+
+  <!-- Bezier connection lines -->
+  <g stroke="#8b5cf6" stroke-width="1" fill="none" opacity="0.3">
+    <path d="M320,134 C380,155 428,180 428,180"/>
+    <path d="M320,134 C280,155 200,180 200,180"/>
+    <path d="M320,134 C340,200 320,248 320,248"/>
+    <path d="M308,120 C340,195 340,200 320,248"/>
+    <path d="M428,180 C380,210 340,240 320,248"/>
+    <path d="M200,180 C240,210 280,240 320,248"/>
+  </g>
+
+  <!-- Background particles -->
+  <g fill="#8b5cf6" opacity="0.2">
+    <circle cx="80" cy="60" r="1"/>
+    <circle cx="560" cy="80" r="0.8"/>
+    <circle cx="100" cy="300" r="1.2"/>
+    <circle cx="520" cy="300" r="0.9"/>
+    <circle cx="320" cy="40" r="0.7"/>
+    <circle cx="450" cy="130" r="0.8"/>
+    <circle cx="180" cy="130" r="1"/>
+  </g>
+
+  <!-- Overlay gradient -->
+  <defs>
+    <linearGradient id="overlayGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0b0f" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0b0f" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="280" width="640" height="80" fill="url(#overlayGrad)"/>
+
+  <!-- Title -->
+  <text x="320" y="310" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="600" fill="#ffffff">3D Provider Network</text>
+  <text x="320" y="332" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#9ca3af">Interactive Topology · 5 Providers · Bezier Connections</text>
+</svg>

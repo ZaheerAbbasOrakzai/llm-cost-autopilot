@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0b0f"/><stop offset="1" stop-color="#12141c"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+
+  <!-- Grid background -->
+  <g stroke="#1f2937" stroke-width="1" opacity="0.3">
+    <line x1="80" y1="0" x2="80" y2="360"/><line x1="160" y1="0" x2="160" y2="360"/>
+    <line x1="240" y1="0" x2="240" y2="360"/><line x1="320" y1="0" x2="320" y2="360"/>
+    <line x1="400" y1="0" x2="400" y2="360"/><line x1="480" y1="0" x2="480" y2="360"/>
+    <line x1="0" y1="80" x2="640" y2="80"/><line x1="0" y1="240" x2="640" y2="240"/>
+  </g>
+
+  <!-- Metric cards -->
+  <g font-family="Inter, sans-serif">
+    <rect x="30" y="40" width="140" height="50" rx="12" fill="#12141c" stroke="#2d3748" stroke-width="1" opacity="0.8"/>
+    <text x="42" y="58" font-size="10" fill="#9ca3af">Requests/min</text>
+    <text x="42" y="74" font-size="18" font-weight="700" fill="#ffffff">3,842</text>
+
+    <rect x="190" y="40" width="140" height="50" rx="12" fill="#12141c" stroke="#2d3748" stroke-width="1" opacity="0.8"/>
+    <text x="202" y="58" font-size="10" fill="#9ca3af">Cost/min</text>
+    <text x="202" y="74" font-size="18" font-weight="700" fill="#10b981">$2.46</text>
+
+    <rect x="350" y="40" width="140" height="50" rx="12" fill="#12141c" stroke="#2d3748" stroke-width="1" opacity="0.8"/>
+    <text x="362" y="58" font-size="10" fill="#9ca3af">Avg Latency</text>
+    <text x="362" y="74" font-size="18" font-weight="700" fill="#06b6d4">142 ms</text>
+  </g>
+
+  <!-- Cost chart -->
+  <g transform="translate(30, 110)">
+    <rect x="0" y="0" width="280" height="120" rx="12" fill="#12141c" stroke="#2d3748" stroke-width="1" opacity="0.8"/>
+    <text x="12" y="18" font-family="Inter" font-size="11" font-weight="600" fill="#e5e7eb">Cost Savings</text>
+    <g fill="#8b5cf6" opacity="0.6">
+      <rect x="12" y="82" width="16" height="28"/><rect x="32" y="68" width="16" height="42"/>
+      <rect x="52" y="78" width="16" height="32"/><rect x="72" y="58" width="16" height="52"/>
+      <rect x="92" y="80" width="16" height="30"/><rect x="112" y="72" width="16" height="38"/>
+    </g>
+  </g>
+
+  <!-- Routing decisions -->
+  <g transform="translate(340, 110)">
+    <rect x="0" y="0" width="310" height="120" rx="12" fill="#12141c" stroke="#2d3748" stroke-width="1" opacity="0.8"/>
+    <text x="12" y="18" font-family="Inter" font-size="11" font-weight="600" fill="#e5e7eb">Routing Decisions</text>
+    <g font-family="Inter" font-size="10" fill="#9ca3af">
+      <text x="12" y="38">GPT-4o Mini · 1,284 tokens · $0.0042</text>
+      <text x="12" y="54">Claude 3 Haiku · 856 tokens · $0.0019</text>
+      <text x="12" y="70">GPT-4o · 512 tokens · $0.0091</text>
+      <text x="12" y="86">Llama 3.1 · 2,034 tokens · $0.0028</text>
+    </g>
+  </g>
+
+  <!-- Tilt card demo -->
+  <g transform="translate(440, 250)">
+    <rect x="0" y="0" width="120" height="70" rx="10" fill="#12141c" stroke="#4f46e5" stroke-width="2" opacity="0.8"/>
+    <text x="60" y="22" text-anchor="middle" font-family="Inter" font-size="11" fill="#9ca3af">TiltCard</text>
+    <text x="60" y="44" text-anchor="middle" font-family="Inter" font-size="16" font-weight="600" fill="#ffffff">3D Hover</text>
+  </g>
+
+  <!-- Overlay -->
+  <defs>
+    <linearGradient id="overlayGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0b0f" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0b0f" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="290" width="640" height="70" fill="url(#overlayGrad)"/>
+
+  <text x="320" y="315" text-anchor="middle" font-family="Inter" font-size="18" font-weight="600" fill="#ffffff">Dashboard Overview</text>
+  <text x="320" y="337" text-anchor="middle" font-family="Inter" font-size="12" fill="#9ca3af">Animated Metrics · Cost Charts · Routing Decisions · 3D Effects</text>
+</svg>

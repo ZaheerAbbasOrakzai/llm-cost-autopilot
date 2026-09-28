@@ -32,15 +32,15 @@ Provider/model rates in the sample catalog are illustrative historical reference
 
 ## 👁️ Visual Gallery
 
-| Dashboard Hero | Provider Network |
-|---|---|
-| <img src="https://placehold.co/600x320/0a0b0f/8b5cf6?text=3D+Hero+Scene" alt="3D Hero Scene with animated icosahedron, orbiting rings, and particle cloud" width="100%" /> | <img src="https://placehold.co/600x320/0a0b0f/06b6d4?text=Provider+Network+3D" alt="Interactive 3D provider network topology with glowing nodes and connection arcs" width="100%" /> |
+| 3D Hero Scene | 3D Provider Network |
+|:---:|:---:|
+| <img src="assets/thumbnail-hero-scene.svg" alt="3D Hero Scene with animated icosahedron, orbiting rings, particle cloud, and multi-point lighting" width="100%" /> | <img src="assets/thumbnail-provider-network.svg" alt="Interactive 3D provider network topology with five glowing nodes, status indicators, and Bezier connection arcs" width="100%" /> |
 
-| Cursor Particles · TiltCard · HoloCard |
-|---|
-| <img src="https://placehold.co/600x320/0a0b0f/f59e0b?text=Interactive+Effects+Demo" alt="Cursor particle trail, 3D tilt card with glare, and holographic border effects" width="100%" /> |
+| Dashboard Overview | 3D Effects & Micro-interactions |
+|:---:|:---:|
+| <img src="assets/thumbnail-dashboard.svg" alt="Dashboard with animated metric cards, cost savings charts, routing decisions table, and 3D tilt card" width="100%" /> | <img src="assets/thumbnail-effects.svg" alt="TiltCard with glare, HoloCard with animated gradient border, cursor particle system, and animated number counters" width="100%" /> |
 
-> **Note:** Placeholder images above will be replaced with real screenshots. Run `npm run dev` to see the live 3D visuals in your browser.
+> Each thumbnail above is an SVG rendering of the actual component visual design. Run `npm run dev` to experience the live real-time 3D animations and interactive effects in your browser.
 
 ## 📊 Pages
 
