@@ -9,6 +9,9 @@ import HeroScene3D from './three/HeroScene3D';
 import ProviderNetwork3D from './three/ProviderNetwork3D';
 import { TiltCard, HoloCard } from './ui/Effects';
 import { useLiveMetrics, Sparkline } from '../hooks/useLiveMetrics';
+import RequestWaterfall from './RequestWaterfall';
+import ExportPanel from './ExportPanel';
+import AnomalyDetection from './AnomalyDetection';
 
 const container = {
   hidden: { opacity: 0 },
@@ -299,6 +302,21 @@ export default function Dashboard() {
               </div>
             </div>
           </HoloCard>
+        </motion.div>
+      </div>
+
+      {/* Live Request Waterfall */}
+      <motion.div variants={item}>
+        <RequestWaterfall />
+      </motion.div>
+
+      {/* Anomaly Detection & Export */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <motion.div variants={item}>
+          <AnomalyDetection />
+        </motion.div>
+        <motion.div variants={item}>
+          <ExportPanel />
         </motion.div>
       </div>
     </motion.div>
