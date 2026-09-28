@@ -34,13 +34,13 @@ Provider/model rates in the sample catalog are illustrative historical reference
 
 | 3D Hero Scene | 3D Provider Network |
 |:---:|:---:|
-| <img src="assets/thumbnail-hero-scene.svg" alt="3D Hero Scene with animated icosahedron, orbiting rings, particle cloud, and multi-point lighting" width="100%" /> | <img src="assets/thumbnail-provider-network.svg" alt="Interactive 3D provider network topology with five glowing nodes, status indicators, and Bezier connection arcs" width="100%" /> |
+| <img src="assets/3D Hero Scene.png" alt="3D Hero Scene with animated icosahedron, orbiting rings, particle cloud, and multi-point lighting" width="100%" /> | <img src="assets/thumbnail-provider-network.png" alt="Interactive 3D provider network topology with five glowing nodes, status indicators, and Bezier connection arcs" width="100%" /> |
 
 | Dashboard Overview | 3D Effects & Micro-interactions |
 |:---:|:---:|
-| <img src="assets/thumbnail-dashboard.svg" alt="Dashboard with animated metric cards, cost savings charts, routing decisions table, and 3D tilt card" width="100%" /> | <img src="assets/thumbnail-effects.svg" alt="TiltCard with glare, HoloCard with animated gradient border, cursor particle system, and animated number counters" width="100%" /> |
+| <img src="assets/thumbnail-dashboard.png" alt="Dashboard with animated metric cards, cost savings charts, routing decisions table, and 3D tilt card" width="100%" /> | <img src="assets/thumbnail-effects.png" alt="TiltCard with glare, HoloCard with animated gradient border, cursor particle system, and animated number counters" width="100%" /> |
 
-> 📸 **Screenshot Gallery**: High-resolution PNG renders of each thumbnail are also available in [`assets/`](assets/) for presentations and demos. Run `npm run dev` to experience the live real-time 3D animations and interactive effects in your browser.
+> 📸 **Screenshot Gallery**: High-resolution PNG renders of each component's visual design are available in [`assets/`](assets/) for presentations and demos. Run `npm run dev` to experience the live real-time 3D animations and interactive effects in your browser.
 
 ## 📊 Pages
 
@@ -308,14 +308,12 @@ Rendered globally via `<CursorParticles />` in `App.tsx`:
 
 | File | Format | Purpose |
 |---|---|---|
-| `thumbnail-hero-scene.svg` | SVG | Hero scene preview (icosahedron, rings, particles) |
-| `thumbnail-provider-network.svg` | SVG | Provider topology preview |
-| `thumbnail-provider-network.svg.png` | PNG render | Hi-res PNG for external use |
-| `thumbnail-dashboard.svg` | SVG | Dashboard overview preview |
-| `thumbnail-dashboard.svg.png` | PNG render | Hi-res PNG for external use |
-| `thumbnail-effects.svg` | SVG | Effects & micro-interactions preview |
-| `thumbnail-effects.svg.png` | PNG render | Hi-res PNG for external use |
-| `3D Hero Scene.png` | PNG screenshot | Full-resolution hero scene capture |
+| `3D Hero Scene.png` | PNG screenshot | Hero scene preview (icosahedron, rings, particles) |
+| `thumbnail-provider-network.png` | PNG render | Provider network topology preview |
+| `thumbnail-dashboard.png` | PNG render | Dashboard overview preview |
+| `thumbnail-effects.png` | PNG render | 3D effects & micro-interactions preview |
+
+All thumbnails are 640×360 px with a dark theme matching the application's color palette (violet `#8b5cf6`, cyan `#06b6d4`, emerald `#10b981`, amber `#f59e0b`).
 
 ### 7. Rendering Architecture
 
